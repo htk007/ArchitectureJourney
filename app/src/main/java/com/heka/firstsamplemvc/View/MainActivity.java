@@ -15,7 +15,7 @@ import com.heka.firstsamplemvc.R;
 public class MainActivity extends AppCompatActivity  implements ILoginView {
     EditText email,password;
     Button loginb;
-    ILoginController loginPresenter;
+    ILoginController loginController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +26,12 @@ public class MainActivity extends AppCompatActivity  implements ILoginView {
         password = (EditText)findViewById(R.id.password);
 
         loginb = (Button) findViewById(R.id.loginb);
-        loginPresenter = new LoginController(this);
+        loginController = new LoginController(this);
 
         loginb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loginPresenter.OnLogin(email.getText().toString().trim(),password.getText().toString().trim());
+                loginController.OnLogin(email.getText().toString().trim(),password.getText().toString().trim());
             }
         });
     }
