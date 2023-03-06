@@ -13,14 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstSampleMVC"
         tools:targetApi="31">
-        <activity
-            android:name=".View.MainActivity"
+        <activity android:name=".View.NoteActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".View.MainActivity"
+            android:exported="true">
+
         </activity>
     </application>
 
