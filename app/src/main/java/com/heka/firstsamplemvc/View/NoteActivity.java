@@ -32,8 +32,8 @@ public class NoteActivity extends AppCompatActivity implements INoteView {
     }
 
     public void addNote(View view){
-        Toast.makeText(this, "deneme click", Toast.LENGTH_SHORT).show();
-        iNoteController.OnSave(etNote.getText().toString(),this);
+        Toast.makeText(this, "save note click", Toast.LENGTH_SHORT).show();
+        iNoteController.OnSave(etNote.getText().toString(),getApplicationContext());
     }
 
 
@@ -43,7 +43,7 @@ public class NoteActivity extends AppCompatActivity implements INoteView {
     }
 
     @Override
-    public void OnLNoteSaveError(String message) {
+    public void OnNoteSaveError(String message) {
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
 }
