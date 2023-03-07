@@ -32,8 +32,8 @@ public class NoteDbAdapter {
         StringBuffer buffer= new StringBuffer();
         while (cursor.moveToNext())
         {
-            @SuppressLint("Range") int cid =cursor.getInt(cursor.getColumnIndex(DbConstants.NID));
-            @SuppressLint("Range") String name =cursor.getString(cursor.getColumnIndex(DbConstants.NOTE));
+           int cid =cursor.getInt(cursor.getColumnIndex(DbConstants.NID));
+           String name =cursor.getString(cursor.getColumnIndex(DbConstants.NOTE));
             buffer.append(cid+ "   " + name + "   " +" \n");
         }
         return buffer.toString();
