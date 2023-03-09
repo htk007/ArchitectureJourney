@@ -12,4 +12,17 @@ public class NoteController implements INoteController{
         long result = noteDbAdapter.insertNote(noteText);
         return result;
     }
+
+    @Override
+    public String getNoteList(Context context) {
+        noteDbAdapter = new NoteDbAdapter(context);
+        String noteList = noteDbAdapter.getNotes();
+        return noteList;
+    }
+
+    @Override
+    public void createDb(Context context) {
+        noteDbAdapter = new NoteDbAdapter(context);
+        noteDbAdapter.createDb();
+    }
 }

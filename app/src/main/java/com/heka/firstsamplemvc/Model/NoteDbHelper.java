@@ -22,6 +22,7 @@ public class NoteDbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {
+            System.out.println("HKLOG sqlite db created");
             db.execSQL(CREATE_TABLE);
         } catch (Exception e) {
             Message.message(context,""+e);

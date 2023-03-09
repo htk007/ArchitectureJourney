@@ -14,6 +14,12 @@ public class NoteDbAdapter {
     public NoteDbAdapter(Context context){
         noteDbHelper = new NoteDbHelper(context);
     }
+    public void createDb(){
+        SQLiteDatabase dbb = noteDbHelper.getWritableDatabase();
+        noteDbHelper.onCreate(dbb);
+    }
+
+
 
     public long insertNote(String note)
     {

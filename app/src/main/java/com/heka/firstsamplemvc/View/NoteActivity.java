@@ -16,24 +16,31 @@ import com.heka.firstsamplemvc.R;
 public class NoteActivity extends AppCompatActivity implements INoteView {
 
     EditText etNote;
-    Button btnSaveNote;
+    Button btnSaveNote, btnGetNote;
     INoteController iNoteController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.note_activity);
         initViews();
+        iNoteController.createDb(this);
     }
 
     private void initViews(){
         btnSaveNote = findViewById(R.id.buttonSaveNote);
+        btnGetNote = findViewById(R.id.buttonListNotes);
         etNote = findViewById(R.id.editTextNoteInput);
         iNoteController = new NoteController();
     }
 
     public void addNote(View view){
         Toast.makeText(this, "save note click", Toast.LENGTH_SHORT).show();
-        iNoteController.OnSave(etNote.getText().toString(),getApplicationContext());
+        iNoteController.OnSave(etNote.getText().toString(),this);
+    }
+
+    public void fetchNote(View view){
+        String noteList = iNoteController.getNoteList(this);
+        System.out.println("HKLOGG NOTELIST "+ noteList);
     }
 
 
