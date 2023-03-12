@@ -12,14 +12,14 @@ public class NoteController implements INoteController{
     @Override
     public long OnSave(Note note, Context context) {
         noteDbAdapter  = new NoteDbAdapter(context);
-        long result = noteDbAdapter.insertNote(note.getNote());
+        long result = noteDbAdapter.insertNote(note);
         return result;
     }
 
     @Override
-    public ArrayList<String> getNoteList(Context context) {
+    public ArrayList<Note> getNoteList(Context context) {
         noteDbAdapter = new NoteDbAdapter(context);
-        ArrayList<String> noteList = noteDbAdapter.getNotes();
+        ArrayList<Note> noteList = noteDbAdapter.getNotes();
         return noteList;
     }
 

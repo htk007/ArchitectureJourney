@@ -2,6 +2,7 @@ package com.heka.firstsamplemvc.Model;
 
 public class Note implements INote{
     private String note;
+    private String createTime;
     private boolean validStatus;
     @Override
     public String getNote() {
@@ -11,6 +12,16 @@ public class Note implements INote{
     @Override
     public void setNote(String note) {
         this.note = note;
+    }
+
+    @Override
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    @Override
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
     @Override

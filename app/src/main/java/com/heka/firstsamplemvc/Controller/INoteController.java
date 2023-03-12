@@ -8,6 +8,6 @@ import java.util.ArrayList;
 
 public interface INoteController {
     long OnSave(Note note, Context context);
-    ArrayList<String> getNoteList(Context context);
+    ArrayList<Note> getNoteList(Context context);
     void createDb(Context context);
 }

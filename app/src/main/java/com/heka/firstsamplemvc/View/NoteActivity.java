@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.heka.firstsamplemvc.Controller.DateTimeHelper;
 import com.heka.firstsamplemvc.Controller.INoteController;
 import com.heka.firstsamplemvc.Controller.NoteController;
 import com.heka.firstsamplemvc.Model.Note;
@@ -40,12 +41,17 @@ public class NoteActivity extends AppCompatActivity implements INoteView {
         Note note = new Note();
         Toast.makeText(this, "save note click", Toast.LENGTH_SHORT).show();
         note.setNote(etNote.getText().toString());
+        String currentDateTime =  DateTimeHelper.getCurrentDateTime();
+        note.setCreateTime(currentDateTime);
         iNoteController.OnSave(note,this);
     }
 
     public void fetchNote(View view){
-        ArrayList<String> noteList = iNoteController.getNoteList(this);
-        System.out.println("HKLOGG NOTELIST "+ noteList.toString());
+        ArrayList<Note> noteList = iNoteController.getNoteList(this);
+        for(Note note : noteList){
+            System.out.println("HKLOGG NOTELIST "+ note.getNote() + " create time " + note.getCreateTime());
+        }
+
     }
 
 
