@@ -19,7 +19,7 @@ public class NoteDbAdapter {
     }
     public void createDb(){
         SQLiteDatabase dbb = noteDbHelper.getWritableDatabase();
-        noteDbHelper.onCreate(dbb);
+        //noteDbHelper.onCreate(dbb);
     }
 
 
