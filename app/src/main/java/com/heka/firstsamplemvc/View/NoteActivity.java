@@ -8,7 +8,10 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.heka.firstsamplemvc.Adapter.MyRecyclerViewAdapter;
 import com.heka.firstsamplemvc.Controller.DateTimeHelper;
 import com.heka.firstsamplemvc.Controller.INoteController;
 import com.heka.firstsamplemvc.Controller.NoteController;
@@ -17,23 +20,28 @@ import com.heka.firstsamplemvc.R;
 
 import java.util.ArrayList;
 
-public class NoteActivity extends AppCompatActivity implements INoteView {
+public class NoteActivity extends AppCompatActivity implements INoteView, MyRecyclerViewAdapter.ItemClickListener  {
 
     EditText etNote;
-    Button btnSaveNote, btnGetNote;
+    Button btnSaveNote;
     INoteController iNoteController;
+    RecyclerView recyclerView;
+    MyRecyclerViewAdapter myRecyclerViewAdapter;
+    ArrayList<Note> noteList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.note_activity);
         initViews();
         iNoteController.createDb(this);
+        fetchNote();
     }
 
     private void initViews(){
         btnSaveNote = findViewById(R.id.buttonSaveNote);
-        btnGetNote = findViewById(R.id.buttonListNotes);
         etNote = findViewById(R.id.editTextNoteInput);
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         iNoteController = new NoteController();
     }
 
@@ -46,12 +54,14 @@ public class NoteActivity extends AppCompatActivity implements INoteView {
         iNoteController.OnSave(note,this);
     }
 
-    public void fetchNote(View view){
-        ArrayList<Note> noteList = iNoteController.getNoteList(this);
+    public void fetchNote(){
+        noteList = iNoteController.getNoteList(this);
         for(Note note : noteList){
             System.out.println("HKLOGG NOTELIST "+ note.getNote() + " create time " + note.getCreateTime());
         }
-
+        myRecyclerViewAdapter = new MyRecyclerViewAdapter(this, noteList);
+        myRecyclerViewAdapter.setClickListener(this);
+        recyclerView.setAdapter(myRecyclerViewAdapter);
     }
 
 
@@ -63,5 +73,10 @@ public class NoteActivity extends AppCompatActivity implements INoteView {
     @Override
     public void OnNoteSaveError(String message) {
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Toast.makeText(this, "You clicked " + myRecyclerViewAdapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
     }
 }
