@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.heka.firstsamplemvc.Controller.INoteController;
 import com.heka.firstsamplemvc.Controller.NoteController;
+import com.heka.firstsamplemvc.Model.Note;
 import com.heka.firstsamplemvc.R;
 
 import java.util.ArrayList;
@@ -36,8 +37,10 @@ public class NoteActivity extends AppCompatActivity implements INoteView {
     }
 
     public void addNote(View view){
+        Note note = new Note();
         Toast.makeText(this, "save note click", Toast.LENGTH_SHORT).show();
-        iNoteController.OnSave(etNote.getText().toString(),this);
+        note.setNote(etNote.getText().toString());
+        iNoteController.OnSave(note,this);
     }
 
     public void fetchNote(View view){

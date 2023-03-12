@@ -1,14 +1,26 @@
 package com.heka.firstsamplemvc.Model;
 
 public class Note implements INote{
-    String note;
+    private String note;
+    private boolean validStatus;
     @Override
     public String getNote() {
-        return null;
+        return note;
+    }
+
+    @Override
+    public void setNote(String note) {
+        this.note = note;
     }
 
     @Override
     public boolean isValid() {
-        return false;
+        return validStatus;
     }
+
+    @Override
+    public void setValid(boolean valid) {
+        this.validStatus = valid;
+    }
+
 }
