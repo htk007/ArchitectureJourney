@@ -6,9 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.heka.firstsamplemvc.Model.Note;
+import com.heka.firstsamplemvc.NotesDiffCallBack;
 import com.heka.firstsamplemvc.R;
 
 import java.util.ArrayList;
@@ -81,5 +83,14 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
         void onItemClick(View view, int position);
+    }
+
+    public void updateEmployeeListItems(ArrayList<Note> notes) {
+        final NotesDiffCallBack diffCallback = new NotesDiffCallBack(this.mData, notes);
+        final DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffCallback);
+
+        this.mData.clear();
+        this.mData.addAll(notes);
+        diffResult.dispatchUpdatesTo(this);
     }
 }

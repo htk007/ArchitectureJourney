@@ -35,6 +35,9 @@ public class NoteActivity extends AppCompatActivity implements INoteView, MyRecy
         initViews();
         iNoteController.createDb(this);
         fetchNote();
+        myRecyclerViewAdapter = new MyRecyclerViewAdapter(this, noteList);
+        myRecyclerViewAdapter.setClickListener(this);
+        recyclerView.setAdapter(myRecyclerViewAdapter);
     }
 
     private void initViews(){
@@ -52,6 +55,8 @@ public class NoteActivity extends AppCompatActivity implements INoteView, MyRecy
         String currentDateTime =  DateTimeHelper.getCurrentDateTime();
         note.setCreateTime(currentDateTime);
         iNoteController.OnSave(note,this);
+        fetchNote();
+        myRecyclerViewAdapter.updateEmployeeListItems(noteList);
     }
 
     public void fetchNote(){
@@ -59,9 +64,7 @@ public class NoteActivity extends AppCompatActivity implements INoteView, MyRecy
         for(Note note : noteList){
             System.out.println("HKLOGG NOTELIST "+ note.getNote() + " create time " + note.getCreateTime());
         }
-        myRecyclerViewAdapter = new MyRecyclerViewAdapter(this, noteList);
-        myRecyclerViewAdapter.setClickListener(this);
-        recyclerView.setAdapter(myRecyclerViewAdapter);
+
     }
 
 
