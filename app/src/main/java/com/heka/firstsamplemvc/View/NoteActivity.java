@@ -13,6 +13,8 @@ import com.heka.firstsamplemvc.Controller.INoteController;
 import com.heka.firstsamplemvc.Controller.NoteController;
 import com.heka.firstsamplemvc.R;
 
+import java.util.ArrayList;
+
 public class NoteActivity extends AppCompatActivity implements INoteView {
 
     EditText etNote;
@@ -39,8 +41,8 @@ public class NoteActivity extends AppCompatActivity implements INoteView {
     }
 
     public void fetchNote(View view){
-        String noteList = iNoteController.getNoteList(this);
-        System.out.println("HKLOGG NOTELIST "+ noteList);
+        ArrayList<String> noteList = iNoteController.getNoteList(this);
+        System.out.println("HKLOGG NOTELIST "+ noteList.toString());
     }
 
 

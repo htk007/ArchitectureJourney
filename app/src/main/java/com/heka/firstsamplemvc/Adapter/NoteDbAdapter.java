@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteDatabase;
 import com.heka.firstsamplemvc.Model.DbConstants;
 import com.heka.firstsamplemvc.Model.NoteDbHelper;
 
+import java.util.ArrayList;
+
 public class NoteDbAdapter {
     NoteDbHelper noteDbHelper;
     public NoteDbAdapter(Context context){
@@ -30,19 +32,20 @@ public class NoteDbAdapter {
         return id;
     }
 
-    public String getNotes()
+    public ArrayList<String> getNotes()
     {
         SQLiteDatabase db = noteDbHelper.getWritableDatabase();
         String[] columns = {DbConstants.NID,DbConstants.NOTE};
         Cursor cursor =db.query(DbConstants.TABLE_NAME,columns,null,null,null,null,null);
         StringBuffer buffer= new StringBuffer();
+        ArrayList<String> noteList = new ArrayList<>();
         while (cursor.moveToNext())
         {
            int cid =cursor.getInt(cursor.getColumnIndex(DbConstants.NID));
            String name =cursor.getString(cursor.getColumnIndex(DbConstants.NOTE));
-            buffer.append(cid+ "   " + name + "   " +" \n");
+            noteList.add(name);
         }
-        return buffer.toString();
+        return noteList;
     }
 
     public  int deleteNote(String note)

@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.heka.firstsamplemvc.Adapter.NoteDbAdapter;
 
+import java.util.ArrayList;
+
 public class NoteController implements INoteController{
     NoteDbAdapter noteDbAdapter;
     @Override
@@ -14,9 +16,9 @@ public class NoteController implements INoteController{
     }
 
     @Override
-    public String getNoteList(Context context) {
+    public ArrayList<String> getNoteList(Context context) {
         noteDbAdapter = new NoteDbAdapter(context);
-        String noteList = noteDbAdapter.getNotes();
+        ArrayList<String> noteList = noteDbAdapter.getNotes();
         return noteList;
     }
 
