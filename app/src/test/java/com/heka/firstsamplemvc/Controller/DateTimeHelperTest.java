@@ -8,7 +8,6 @@ import org.junit.Test;
 
 public class DateTimeHelperTest {
 
-
     @Test
     public void isDateTimeNotEmpty(){
         String result = DateTimeHelper.getCurrentDateTime();
