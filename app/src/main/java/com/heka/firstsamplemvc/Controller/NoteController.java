@@ -31,7 +31,7 @@ public class NoteController implements INoteController{
 
     @Override
     public boolean isValidNote(Note note) {
-        if (note.getNote().isEmpty()) return false;
+        if (note.getNote().trim().isEmpty()) return false;
         else return true;
     }
 }
