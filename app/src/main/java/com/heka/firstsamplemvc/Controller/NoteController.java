@@ -28,4 +28,10 @@ public class NoteController implements INoteController{
         noteDbAdapter = new NoteDbAdapter(context);
         noteDbAdapter.createDb();
     }
+
+    @Override
+    public boolean isValidNote(Note note) {
+        if (note.getNote().isEmpty()) return false;
+        else return true;
+    }
 }

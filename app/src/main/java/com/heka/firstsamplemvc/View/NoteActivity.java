@@ -50,13 +50,17 @@ public class NoteActivity extends AppCompatActivity implements INoteView, MyRecy
 
     public void addNote(View view){
         Note note = new Note();
-        Toast.makeText(this, "save note click", Toast.LENGTH_SHORT).show();
         note.setNote(etNote.getText().toString());
         String currentDateTime =  DateTimeHelper.getCurrentDateTime();
         note.setCreateTime(currentDateTime);
-        iNoteController.OnSave(note,this);
-        fetchNote();
-        myRecyclerViewAdapter.updateEmployeeListItems(noteList);
+        if(iNoteController.isValidNote(note)){
+            iNoteController.OnSave(note,this);
+            fetchNote();
+            myRecyclerViewAdapter.updateEmployeeListItems(noteList);
+        }else{
+            Toast.makeText(this, "NOT EMPTY!", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void fetchNote(){

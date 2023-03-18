@@ -10,4 +10,5 @@ public interface INoteController {
     long OnSave(Note note, Context context);
     ArrayList<Note> getNoteList(Context context);
     void createDb(Context context);
+    boolean isValidNote(Note note);
 }
