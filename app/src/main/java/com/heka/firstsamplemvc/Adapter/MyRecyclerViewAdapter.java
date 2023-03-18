@@ -4,7 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
@@ -51,17 +53,30 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
        TextView noteTextView;
        TextView createTimeTextView;
+        ImageView imageViewEdit;
+        ImageView imageViewDelete;
 
         ViewHolder(View itemView) {
             super(itemView);
             noteTextView = itemView.findViewById(R.id.textViewNote);
             createTimeTextView = itemView.findViewById(R.id.textViewCreateTime);
-            itemView.setOnClickListener(this);
+            imageViewEdit = itemView.findViewById(R.id.imageViewEdit);
+            imageViewDelete = itemView.findViewById(R.id.imageViewDelete);
+            imageViewDelete.setOnClickListener(this);
+            imageViewEdit.setOnClickListener(this);
+            //itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+            if(view.getId() == imageViewDelete.getId()){
+                //Toast.makeText(imageViewDelete.getContext(), "delete clicked!", Toast.LENGTH_SHORT).show();
+                mClickListener.onDeleteClick(view, getAdapterPosition());
+            }
+            else if(view.getId() == imageViewEdit.getId()){
+                Toast.makeText(imageViewEdit.getContext(), "update clicked!", Toast.LENGTH_SHORT).show();
+            }
+           // if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
         }
     }
 
@@ -78,6 +93,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
         void onItemClick(View view, int position);
+        void onDeleteClick(View view, int position);
     }
 
     public void updateEmployeeListItems(ArrayList<Note> notes) {

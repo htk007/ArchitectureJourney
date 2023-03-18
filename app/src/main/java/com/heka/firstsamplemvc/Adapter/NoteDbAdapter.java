@@ -55,16 +55,16 @@ public class NoteDbAdapter {
         return noteList;
     }
 
-    /*
+
     public  int deleteNoteWithId(int  noteId)
     {
         SQLiteDatabase db = noteDbHelper.getWritableDatabase();
-        int[] whereArgs ={noteId};
+        String[] selectionArgs = { String.valueOf(noteId) };
 
-        int count =db.delete(DbConstants.TABLE_NAME ,DbConstants.NID+" = ?", new String[]{whereArgs.toString()});
+        int count =db.delete(DbConstants.TABLE_NAME ,DbConstants.NID+" = ?", selectionArgs);
         return  count;
     }
-    */
+
 
     public int updateNote(String oldNote , String newNote)
     {

@@ -11,4 +11,5 @@ public interface INoteController {
     ArrayList<Note> getNoteList(Context context);
     void createDb(Context context);
     boolean isValidNote(Note note);
+    int deleteNote(int noteId);
 }

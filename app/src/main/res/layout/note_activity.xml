@@ -17,6 +17,7 @@
             android:id="@+id/editTextNoteInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_rounded_note_main"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_weight="1"

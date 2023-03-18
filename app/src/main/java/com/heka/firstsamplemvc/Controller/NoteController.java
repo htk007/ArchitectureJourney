@@ -34,4 +34,11 @@ public class NoteController implements INoteController{
         if (note.getNote().trim().isEmpty()) return false;
         else return true;
     }
+
+    @Override
+    public int deleteNote(int noteId) {
+        int result =0;
+        result = noteDbAdapter.deleteNoteWithId(noteId);
+        return result;
+    }
 }

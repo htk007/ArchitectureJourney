@@ -86,4 +86,13 @@ public class NoteActivity extends AppCompatActivity implements INoteView, MyRecy
     public void onItemClick(View view, int position) {
         Toast.makeText(this, "You clicked " + myRecyclerViewAdapter.getItem(position).getId()+ " on row number " + position, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onDeleteClick(View view, int position) {
+        //myRecyclerViewAdapter.getItem(position).getId()
+        //Toast.makeText(this, "delete clicked!!!", Toast.LENGTH_SHORT).show();
+        iNoteController.deleteNote(myRecyclerViewAdapter.getItem(position).getId());
+        fetchNote();
+        myRecyclerViewAdapter.updateEmployeeListItems(noteList);
+    }
 }
