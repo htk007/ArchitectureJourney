@@ -15,7 +15,8 @@ We start with MVC parttern via Note Application, then we will transform that to 
 ✅ DiffUtil <br/>
 ✅ MVC Pattern <br/>
 
-
 <br/><br/>
-<a href="https://github.com/htk007/ArchitectureJourney/blob/develop_notebook_mvc/screenshots/Screenshot_20230318_222342.png">Screenshot 1</a>
-<a href="https://github.com/htk007/ArchitectureJourney/blob/develop_notebook_mvc/screenshots/Screenshot_20230318_222342.png">Screenshot 1</a>
+🌞 <a href="https://github.com/htk007/ArchitectureJourney/blob/develop_notebook_mvc/screenshots/Screenshot_20230318_222342.png">Screenshot Main Screen</a>
+<br/>
+🌞 <a href="https://github.com/htk007/ArchitectureJourney/blob/develop_notebook_mvc/screenshots/update.png">Screenshot Update</a>
+<br/>
