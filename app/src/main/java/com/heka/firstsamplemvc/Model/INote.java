@@ -7,4 +7,6 @@ public interface INote {
     void setCreateTime(String createTime);
     boolean isValid();
     void setValid(boolean valid);
+    void setId(int id);
+    int getId();
 }

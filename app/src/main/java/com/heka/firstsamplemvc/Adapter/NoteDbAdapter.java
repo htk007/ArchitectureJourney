@@ -49,19 +49,22 @@ public class NoteDbAdapter {
            String createTime =cursor.getString(cursor.getColumnIndex(DbConstants.CREATE_TIME));
            note.setNote(noteText);
            note.setCreateTime(createTime);
+           note.setId(cid);
            noteList.add(note);
         }
         return noteList;
     }
 
-    public  int deleteNote(String note)
+    /*
+    public  int deleteNoteWithId(int  noteId)
     {
         SQLiteDatabase db = noteDbHelper.getWritableDatabase();
-        String[] whereArgs ={note};
+        int[] whereArgs ={noteId};
 
-        int count =db.delete(DbConstants.TABLE_NAME ,DbConstants.NOTE+" = ?",whereArgs);
+        int count =db.delete(DbConstants.TABLE_NAME ,DbConstants.NID+" = ?", new String[]{whereArgs.toString()});
         return  count;
     }
+    */
 
     public int updateNote(String oldNote , String newNote)
     {

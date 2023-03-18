@@ -1,6 +1,7 @@
 package com.heka.firstsamplemvc.Model;
 
 public class Note implements INote{
+    private int id;
     private String note;
     private String createTime;
     private boolean validStatus;
@@ -32,6 +33,14 @@ public class Note implements INote{
     @Override
     public void setValid(boolean valid) {
         this.validStatus = valid;
+    }
+    @Override
+    public int getId() {
+        return id;
+    }
+    @Override
+    public void setId(int id) {
+        this.id = id;
     }
 
 }
