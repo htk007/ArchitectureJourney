@@ -66,13 +66,13 @@ public class NoteDbAdapter {
     }
 
 
-    public int updateNote(String oldNote , String newNote)
+    public int updateNote(String newNote, int noteId)
     {
         SQLiteDatabase db = noteDbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(DbConstants.NOTE,newNote);
-        String[] whereArgs= {oldNote};
-        int count =db.update(DbConstants.TABLE_NAME,contentValues, DbConstants.NOTE+" = ?",whereArgs );
+        String[] selectionArgs = { String.valueOf(noteId) };
+        int count =db.update(DbConstants.TABLE_NAME,contentValues, DbConstants.NID+" = ?",selectionArgs );
         return count;
     }
 }

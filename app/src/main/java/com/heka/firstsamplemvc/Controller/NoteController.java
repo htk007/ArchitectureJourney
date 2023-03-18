@@ -41,4 +41,11 @@ public class NoteController implements INoteController{
         result = noteDbAdapter.deleteNoteWithId(noteId);
         return result;
     }
+
+    @Override
+    public int updateNote(Note note) {
+        int result = 0;
+        result = noteDbAdapter.updateNote(note.getNote(), note.getId());
+        return result;
+    }
 }

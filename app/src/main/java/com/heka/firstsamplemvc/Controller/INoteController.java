@@ -12,4 +12,5 @@ public interface INoteController {
     void createDb(Context context);
     boolean isValidNote(Note note);
     int deleteNote(int noteId);
+    int updateNote(Note note);
 }

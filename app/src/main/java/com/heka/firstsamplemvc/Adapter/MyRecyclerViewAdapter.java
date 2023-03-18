@@ -74,7 +74,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
                 mClickListener.onDeleteClick(view, getAdapterPosition());
             }
             else if(view.getId() == imageViewEdit.getId()){
-                Toast.makeText(imageViewEdit.getContext(), "update clicked!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(imageViewEdit.getContext(), "update clicked!", Toast.LENGTH_SHORT).show();
+                mClickListener.onUpdateClick(view, getAdapterPosition());
             }
            // if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
         }
@@ -94,6 +95,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public interface ItemClickListener {
         void onItemClick(View view, int position);
         void onDeleteClick(View view, int position);
+        void onUpdateClick(View view, int positio);
     }
 
     public void updateEmployeeListItems(ArrayList<Note> notes) {

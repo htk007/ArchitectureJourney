@@ -5,9 +5,11 @@
       <map>
         <entry key="app/src/main/res/drawable/bg_rounded_note_item.xml" value="0.164" />
         <entry key="app/src/main/res/drawable/bg_rounded_note_main.xml" value="0.184" />
+        <entry key="app/src/main/res/drawable/popup_background.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.15307971014492755" />
         <entry key="app/src/main/res/layout/note_activity.xml" value="0.2745762711864407" />
         <entry key="app/src/main/res/layout/note_list_item.xml" value="0.23550724637681159" />
+        <entry key="app/src/main/res/layout/update_dialog.xml" value="0.24627838134765626" />
       </map>
     </option>
   </component>

@@ -1,5 +1,8 @@
 package com.heka.firstsamplemvc.View;
 
+import android.app.AlertDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -92,6 +95,39 @@ public class NoteActivity extends AppCompatActivity implements INoteView, MyRecy
         //myRecyclerViewAdapter.getItem(position).getId()
         //Toast.makeText(this, "delete clicked!!!", Toast.LENGTH_SHORT).show();
         iNoteController.deleteNote(myRecyclerViewAdapter.getItem(position).getId());
+        fetchNote();
+        myRecyclerViewAdapter.updateEmployeeListItems(noteList);
+    }
+
+    @Override
+    public void onUpdateClick(View view, int positio) {
+        showAlertDialog(myRecyclerViewAdapter.getItem(positio));
+    }
+
+    private void showAlertDialog(Note note){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.CustomAlertDialog);
+
+        // set the custom layout
+        final View customLayout = getLayoutInflater().inflate(R.layout.update_dialog, null);
+        builder.setView(customLayout);
+        EditText editText = customLayout.findViewById(R.id.editText);
+        editText.setText(note.getNote());
+        // add a button
+        builder.setPositiveButton("UPDATE", (dialog, which) -> {
+            // send data from the AlertDialog to the Activity
+            //EditText editText = customLayout.findViewById(R.id.editText);
+            note.setNote(editText.getText().toString());
+            sendDialogDataToActivity(note);
+        });
+        // create and show the alert dialog
+        AlertDialog dialog = builder.create();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+    }
+
+    // Do something with the data coming from the AlertDialog
+    private void sendDialogDataToActivity(Note note) {
+        iNoteController.updateNote(note);
         fetchNote();
         myRecyclerViewAdapter.updateEmployeeListItems(noteList);
     }
